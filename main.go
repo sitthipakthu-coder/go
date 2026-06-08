@@ -1,9 +1,9 @@
 package main
 
 import (
-	"learngo/chapter2"
+	data "learngo/chapter2/Data"
 )
 
 func main() {
-	chapter2.Varible()
+	data.Data()
 }

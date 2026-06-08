@@ -41,9 +41,11 @@ func operator3() {
 
 	var number bool = true
 	var number2 bool = false
-
+	//และ
 	fmt.Println(number && number2)
+	//หรือ
 	fmt.Println(number || number2)
+	//ไม่ใช่
 	fmt.Println(!number)
 
 }
