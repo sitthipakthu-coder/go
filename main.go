@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	data.Data()
+	data.SayHello2("tang", 5)
 }
