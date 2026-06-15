@@ -5,5 +5,12 @@ import (
 )
 
 func main() {
-	data.SayHello2("tang", 5)
+	dog := data.Dog{Name: "Buddy"}
+	person := data.Person1{Name: "Tang"}
+	cat := data.Cat{Name: "Mew"}
+
+	data.MakeSound(dog)
+	data.MakeSound(person)
+	data.MakeSound(cat)
+
 }
