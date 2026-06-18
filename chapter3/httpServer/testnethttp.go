@@ -1,31 +1,20 @@
 package httpserver
 
 import (
-	"fmt"
-	"log"
-	"net/http"
+	"github.com/gofiber/fiber/v2"
 )
 
-func helloHandler(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path != "/hello" {
-		http.Error(w, "404 not found", http.StatusNotFound)
-		return
-	}
-
-	if r.Method != "GET" {
-		http.Error(w, "Method is not supported", http.StatusNotFound)
-		return
-	}
-
-	fmt.Println(w, "Hello World!")
+func helloHandler() {
 
 }
 
 func EchoData() {
-	http.HandleFunc("/hello", helloHandler)
+	app := fiber.New()
 
-	fmt.Printf("Starting server at port 8080")
-	if err := http.ListenAndServe(":8080", nil); err != nil {
-		log.Fatal(err)
-	}
+	app.Get("/hello",
+		func(c *fiber.Ctx) error {
+			return c.SendString("Hello Word! test_1")
+		})
+
+	app.Listen(":8080")
 }

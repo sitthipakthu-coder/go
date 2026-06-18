@@ -1,9 +1,10 @@
 package main
 
 import (
-	data "learngo/chapter3/httpServer"
+	crud "learngo/chapter3/CRUD"
 )
 
 func main() {
-	data.EchoData()
+	crud.ShowdataCRUD()
+
 }
