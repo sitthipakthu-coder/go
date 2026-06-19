@@ -1,30 +1,41 @@
 package crud
 
 import (
+	env "learngo/chapter3/ENV"
+	"learngo/chapter3/uplodafile"
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/template/html/v2"
 )
 
 type Book struct {
 	ID     int    `json:"id"`
-	Title  string `json:"title`
-	Author string `json:author`
+	Title  string `json:"title"`
+	Author string `json:"author"`
 }
 
 var books []Book
 
 func ShowdataCRUD() {
-	appcrud := fiber.New()
+	engine := html.New("./chapter3/views", ".html")
+	appcrud := fiber.New(fiber.Config{
+		Views: engine,
+	})
 
 	books = append(books, Book{ID: 1, Title: "1984", Author: "George Orwell"})
 	books = append(books, Book{ID: 2, Title: "The Great Gatsby", Author: "F. Scott Fitzgerald"})
 
 	appcrud.Get("/books", getAllBooks)
 	appcrud.Get("/books/:id", getAllBook)
-	appcrud.Post(":books", CreateBook)
+	appcrud.Post("/books", CreateBook)
 	appcrud.Put("/books/:id", UpdateBook)
 	appcrud.Delete("/books/:id", DeleteBook)
+
+	appcrud.Post("/upload", uplodafile.UploadFile)
+	appcrud.Get("/test-html", TestHTML)
+
+	appcrud.Get("/config", env.GetEnv)
 
 	appcrud.Listen(":8080")
 

@@ -6,7 +6,7 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
-func updateBook(c *fiber.Ctx) error {
+func UpdateBook(c *fiber.Ctx) error {
 	bookid, err := strconv.Atoi(c.Params("id"))
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).SendString(err.Error())
